@@ -1,0 +1,73 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "b-splines"
+version = "0.1.0"
+description = "Cubic spline library for scientific computing"
+license = {text = "MIT"}
+authors = [
+    {name = "B-Splines Development Team"}
+]
+maintainers = [
+    {name = "B-Splines Development Team"}
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "Topic :: Scientific/Engineering :: Mathematics"
+]
+requires-python = ">=3.8"
+dependencies = [
+    "numpy>=1.21.0",
+    "scipy>=1.7.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=6.0",
+    "pytest-cov>=2.0",
+    "build>=0.10.0",
+    "twine>=4.0.0",
+]
+test = [
+    "pytest>=6.0",
+    "pytest-cov>=2.0",
+]
+
+[project.readme]
+file = "README.md"
+content-type = "text/markdown"
+
+[project.urls]
+Homepage = "https://gitlab.steelpages.info/codeas/b_splines"
+Repository = "https://gitlab.steelpages.info/codeas/b_splines.git"
+"Bug Tracker" = "https://gitlab.steelpages.info/codeas/b_splines/issues"
+
+[tool.setuptools.packages.find]
+include = ["b_splines*"]
+exclude = ["tests*", "docs*", "examples*"]
+
+[tool.setuptools.package-data]
+b_splines = ["tests/data/coordinates/*.npy"]
+
+[project.scripts]
+# Define command-line scripts here if needed
+# bsplines-validate = "b_splines.cli:validate"
+
+[project.gui-scripts]
+# Define GUI scripts here if needed
+
+[tool.setuptools]
+# This section is for setuptools-specific configurations
+zip-safe = false
