@@ -25,9 +25,9 @@
    
    Для запуска проекта в ОС Linux
    1. Создание виртуального окружения:
-      python3 -m venv my_env
+      python3 -m venv venv
    2. Активация окружения:
-      source my_env/bin/activate
+      source venv/bin/activate
    3. Устновка зависимостей 
        pip install -r requirements.txt
    4. Установить нужные параметры в configs/config.yaml

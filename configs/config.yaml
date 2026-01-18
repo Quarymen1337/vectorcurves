@@ -1,0 +1,26 @@
+project:
+  name: "vectoratomcurves"
+  version: "1.0.0"
+  author: "Polyakov Stepan"  
+  random_seed: 42
+  enable_warnings: False 
+
+
+dataset:
+  path : 'data/dataset_10000_1_filtered'
+  max_atom_len: 5000
+  min_atom_len: 500
+  length: 400
+  spline_interpolation_points: 1024
+
+model: 
+  device: 'cuda'
+  save_folder : 'models'
+  latent_dim: 64
+
+training: 
+  early_stoping: 15
+  batch_size: 32
+  epochs: 200
+  validation_split: 0.1
+  learning_rate: 0.001
