@@ -22,40 +22,7 @@ from src.models.rc_ae import ResConvModel
 from src.metrics.diff_loss import diff_loss
 from src.utils.cfg import load_config
 from src.data.loader import load_and_preprocess_pdb_files
-
-
-
-
-
-def resample_trajectories(ca_points: List[np.ndarray], 
-                          k_points: int = 512) -> List[np.ndarray]:
-    """
-    Ресемплирует траектории CA-атомов с использованием кубических сплайнов.
-    
-    Args:
-        ca_points: Список массивов координат CA-атомов
-        k_points: Количество точек после ресемплинга
-        
-    Returns:
-        List[np.ndarray]: Список ресемплированных траекторий
-    """
-    resampled_coords = []
-    
-    print(f"Ресемплирование траекторий до {k_points} точек...")
-    
-    for i, example in enumerate(tqdm(ca_points, desc="Ресемплирование")):
-        try:
-            # Получаем инвариантные признаки
-            features = get_invariant_features(np.array(example))
-            
-            # Ресемплируем с помощью кубических сплайнов
-            resampled = resample_trajectory_cubic_spline(features, k=k_points)
-            resampled_coords.append(resampled)
-            
-        except Exception as e:
-            print(f"Ошибка при ресемплировании примера {i}: {e}")
-    
-    return resampled_coords
+from src.preprocessing.resample import resample_trajectories
 
 
 def print_training_config(config: Dict[str, Any]) -> Tuple[str, float, int, int, int]:
