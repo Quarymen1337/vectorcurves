@@ -1,11 +1,23 @@
-pandas==2.3.3
-tqdm==4.67.1
-torch-geometric==2.7.0
-PyYAML==6.0.3
-torch==2.9.1
-scipy==1.16.3
-scikit-learn==1.8.0
-numpy==2.4.1
-sympy==1.14.0
-setuptools==66.1.1
-babel==2.17.0
+# Core dependencies
+torch>=2.0.0
+numpy>=1.24.0
+pandas>=2.0.0
+scipy>=1.10.0
+scikit-learn>=1.2.0
+
+# Data processing
+PyYAML>=6.0
+biopython>=1.81
+tqdm>=4.65.0
+
+# Visualization
+matplotlib>=3.7.0
+
+# PyTorch Geometric (optional, for graph-based models)
+torch-geometric>=2.3.0
+
+# Additional utilities
+sympy>=1.11.0
+
+# Testing
+pytest>=7.3.0

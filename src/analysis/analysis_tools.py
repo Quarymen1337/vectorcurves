@@ -6,7 +6,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 import torch
-from curve_comparison import compare_curves_3d, calculate_reconstruction_metrics
+
+# Примечание: curve_comparison должен быть импортирован отдельно при необходимости
+# from .curve_comparison import compare_curves_3d, calculate_reconstruction_metrics
 
 
 def analyze_training_history(history):
