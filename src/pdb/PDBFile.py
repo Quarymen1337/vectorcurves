@@ -13,12 +13,13 @@ class PDBFile:
         self.path = PATH
         self.atom_line = []  # Список всех атомов
         self.ca_atom_line = []  # Список только CA атомов (альфа-углероды)
+        self.backbone_line = []
+        self.backbone_type_line = []
         self.enable_warnings = enable_warnings
         
         # Чтение файла и поиск CA атомов при инициализации
         self.read(self.path)
         self.find_ca()
-
     def read(self, PATH):
         """
         Чтение PDB файла и извлечение атомов.
@@ -49,6 +50,30 @@ class PDBFile:
             # Проверка наличия CA атомов
             if len(self.ca_atom_line) == 0:
                 self._show_warning('Not Found CA atoms')
+
+    def find_backbone(self):
+        if len(self.atom_line) == 0:
+            self._show_warning('ERROR! Length atom_line = 0!!!', self.path)
+        else:
+            for atom in self.atom_line:
+                if atom.name == 'CA':
+                    self.backbone_line.append(atom)
+                    self.backbone_type_line.append(0)
+                elif atom.name == 'N':
+                    self.backbone_line.append(atom)
+                    self.backbone_type_line.append(1)
+                elif atom.name == 'C':
+                    self.backbone_line.append(atom)
+                    self.backbone_type_line.append(2)
+                
+                
+            
+            if len(self.backbone_line) == 0:
+                self._show_warning('Not Found backbone atoms')
+
+        return self.backbone_line, self.backbone_type_line
+                
+
 
     def _show_warning(self, message, path=None):
         """
@@ -91,6 +116,26 @@ class PDBFile:
             z = atom.z
             points.append([x, y, z])
         return points
+
+    def get_backbone_cloud(self):
+        #Возвращение бекбона с типами атомов
+        self.find_backbone()
+        points = []
+        atom_array = None
+        
+    
+        atom_array = self.backbone_line
+    
+
+        # Извлечение координат атомов
+        for atom in atom_array:
+            x = atom.x
+            y = atom.y
+            z = atom.z
+            points.append([x, y, z])
+        return points, self.backbone_type_line
+
+    
     
     def getAtom(self):
         """

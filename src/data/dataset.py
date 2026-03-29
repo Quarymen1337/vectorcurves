@@ -1,5 +1,4 @@
 import torch
-from torch.utils.data import Dataset, DataLoader
 import numpy as np
 class Trajectories_dataset(Dataset):
     def __init__(self, trajectories, normalize=False):
