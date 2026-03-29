@@ -38,7 +38,6 @@ ENV/
 # Project specific
 *.log
 *.pth
-!best_*.pth
 data/raw/
 data/processed/
 *.dssp
