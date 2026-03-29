@@ -7,10 +7,10 @@ project:
 
 
 dataset:
-  path : 'data/dataset_10000_1_filtered'
-  max_atom_len: 5000
-  min_atom_len: 500
-  length: 400
+  path : 'data/dompdb'
+  max_atom_len: 0
+  min_atom_len: 1000000
+  length: 34649
   spline_interpolation_points: 1024
 
 model: 
